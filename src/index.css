@@ -1,0 +1,111 @@
+/* Hapus semua style body lama jika ada */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* * --- INI DIA PERBAIKANNYA ---
+ * Kita ganti dari gradient/putih menjadi abu-abu terang
+ * Ini akan menjadi warna 'kanvas' di belakang semua kartu Anda.
+*/
+body {
+  @apply bg-gray-50 text-gray-800;
+}
+
+/* Animasi fade-in sederhana untuk memuat halaman */
+@layer utilities {
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+}
+
+/* =========================================
+  Kustomisasi Swiper.js untuk Hero Banner
+========================================= 
+*/
+.hero-slider {
+  @apply relative;
+}
+
+.hero-slider .swiper-button-next,
+.hero-slider .swiper-button-prev {
+  @apply text-white bg-black bg-opacity-20 rounded-full w-10 h-10;
+  transition: all 0.2s ease-in-out;
+}
+
+.hero-slider .swiper-button-next::after,
+.hero-slider .swiper-button-prev::after {
+  @apply text-base font-extrabold;
+}
+
+.hero-slider .swiper-button-next:hover,
+.hero-slider .swiper-button-prev:hover {
+  @apply bg-opacity-50;
+}
+
+.hero-slider .swiper-pagination-bullet {
+  @apply w-2 h-2 bg-white bg-opacity-70;
+}
+
+.hero-slider .swiper-pagination-bullet-active {
+  @apply bg-white scale-125;
+}
+
+
+/* =========================================
+  Kustomisasi Swiper.js untuk Kategori
+========================================= 
+*/
+.category-slider {
+  @apply pb-1 relative;
+  --swiper-navigation-sides-offset: 10px;
+}
+
+.category-slider .swiper-button-next,
+.category-slider .swiper-button-prev {
+  @apply text-cyan-600 bg-white shadow-md rounded-full w-10 h-10;
+  top: 45%; 
+  transition: all 0.2s ease-in-out;
+}
+
+.category-slider .swiper-button-next:hover,
+.category-slider .swiper-button-prev:hover {
+  @apply bg-cyan-50 scale-105;
+}
+
+.category-slider .swiper-button-next::after,
+.category-slider .swiper-button-prev::after {
+  @apply text-base font-extrabold;
+}
+
+.category-slider .swiper-button-prev,
+.category-slider .swiper-button-next {
+  @apply hidden;
+}
+
+@media (min-width: 640px) {
+  .category-slider .swiper-button-prev,
+  .category-slider .swiper-button-next {
+    @apply flex;
+  }
+}
+
+.category-slider .swiper-button-disabled {
+  @apply opacity-20 cursor-not-allowed pointer-events-auto;
+}
+
+.category-slider .swiper-slide {
+  @apply h-auto; 
+}
+.category-slider .swiper-slide > a {
+  @apply h-full; 
+}
